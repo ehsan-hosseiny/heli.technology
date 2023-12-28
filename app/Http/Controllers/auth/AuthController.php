@@ -31,7 +31,7 @@ class AuthController extends Controller
      */
     public function login(LoginRequest $request)
     {
-        if (!$data = $this->authServiceInterface->login($request->email, $request->password)) {
+        if (!$data = $this->authServiceInterface->login($request->email, $request->password,$request->header('User-Agent'))) {
             return response()->json(['message' => 'Invalid credentials'], Response::HTTP_UNAUTHORIZED);
         }
         return response()->json(['message' => 'User logged in successfully',

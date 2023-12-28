@@ -18,8 +18,8 @@ class AuthService implements AuthServiceInterface
        return resolve(AuthRepositoryInterface::class)->register($email,$password);
     }
 
-    public function login(string $email,string $password)
+    public function login(string $email,string $password,string $agent)
     {
-        return resolve(AuthRepositoryInterface::class)->login($email,$password);
+        return resolve(AuthRepositoryInterface::class)->login($email,$password,$agent);
     }
 }
