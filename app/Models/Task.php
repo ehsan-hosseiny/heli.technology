@@ -10,7 +10,6 @@ class Task extends Model
     use HasFactory;
 
     const STATUS_CREATED = 'created';
-    const STATUS_ASSIGNED = 'assigned';
     const STATUS_IN_PROGRESS = 'in_progress';
     const STATUS_COMPLETE = 'complete';
 

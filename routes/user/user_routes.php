@@ -7,9 +7,6 @@ Route::middleware('auth:sanctum')->prefix('/v1')->group(function () {
 
     Route::prefix('/task')->group(function (){
         Route::post('/', [UserController::class, 'createTask'])->name('user.add.task');
-        Route::patch('/', [UserController::class, 'editTask'])->name('user.edit.task');
-
+        Route::patch('/{id}', [UserController::class, 'editTask'])->name('user.edit.task');
     });
-
-
 });

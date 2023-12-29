@@ -1,5 +1,7 @@
 <?php
 
 return [
-    "title"=>'Title'
+    "title"=>'Title',
+    "task"=>'Task',
+    "id"=>'ID',
 ];

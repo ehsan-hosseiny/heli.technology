@@ -5,8 +5,6 @@ namespace App\Services;
 
 use App\Interfaces\UserRepositoryInterface;
 use App\Interfaces\UserServiceInterface;
-use App\Models\UserPreference;
-use Illuminate\Database\Eloquent\Collection;
 
 class UserService implements UserServiceInterface
 {
@@ -16,15 +14,15 @@ class UserService implements UserServiceInterface
      */
     public function addTask(int $userId,string $title, string $description = null)
     {
-        return resolve(UserRepositoryInterface::class)->addTask($userId,$title,$description);
+        resolve(UserRepositoryInterface::class)->addTask($userId,$title,$description);
     }
 
     /**
      * @inheritDoc
      */
-    public function editTask()
+    public function editTask(int $id,string $status)
     {
-        return resolve(UserRepositoryInterface::class)->preferences();
+        return resolve(UserRepositoryInterface::class)->editTask($id, $status);
     }
 
 

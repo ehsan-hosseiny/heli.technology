@@ -16,4 +16,9 @@ class UserRepository implements UserRepositoryInterface
             'description'=>$description,
         ]);
     }
+
+    public function editTask(int $id,string $status)
+    {
+        Task::find($id)->update(['status'=>$status]);
+    }
 }

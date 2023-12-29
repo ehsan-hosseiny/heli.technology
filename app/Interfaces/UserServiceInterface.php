@@ -19,9 +19,11 @@ interface UserServiceInterface
     public function addTask(int $userId,string $title, string $description = null);
 
     /**
-     * @return UserPreference
+     * @param int $id
+     * @param string $status
+     * @return mixed
      */
-    public function editTask();
+    public function editTask(int $id,string $status);
 
 
 
