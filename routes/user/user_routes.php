@@ -5,14 +5,11 @@ use \App\Http\Controllers\user\UserController;
 
 Route::middleware('auth:sanctum')->prefix('/v1')->group(function () {
 
-    Route::prefix('/preferences')->group(function (){
-        Route::get('/', [UserController::class, 'preferences'])->name('user.get.preferences');
-        Route::post('/', [UserController::class, 'addPreferences'])->name('user.add.preferences');
-        Route::delete('/{id}', [UserController::class, 'deletePreferences'])->name('user.delete.preferences');
-    });
-    Route::get('/sources', [UserController::class, 'sources'])->name('user.get.sources');
+    Route::prefix('/task')->group(function (){
+        Route::post('/', [UserController::class, 'createTask'])->name('user.add.task');
+        Route::patch('/', [UserController::class, 'editTask'])->name('user.edit.task');
 
-    Route::get('/news', [UserController::class, 'news'])->name('user.get.news');
+    });
 
 
 });

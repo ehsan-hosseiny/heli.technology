@@ -14,40 +14,18 @@ class UserService implements UserServiceInterface
     /**
      * @inheritDoc
      */
-    public function preferences()
+    public function addTask(int $userId,string $title, string $description = null)
     {
-        return resolve(UserRepositoryInterface::class)->preferences();
+        return resolve(UserRepositoryInterface::class)->addTask($userId,$title,$description);
     }
 
     /**
      * @inheritDoc
      */
-    public function sources()
+    public function editTask()
     {
-        return resolve(UserRepositoryInterface::class)->sources();
+        return resolve(UserRepositoryInterface::class)->preferences();
     }
 
-    /**
-     * @param string $type
-     * @param string $preference
-     * @return mixed
-     */
-    public function addPreferences(string $type,string $preference)
-    {
-        return resolve(UserRepositoryInterface::class)->addPreferences($type,$preference);
-    }
-
-    /**
-     * @return UserPreference
-     */
-    public function deletePreferences($id)
-    {
-        return resolve(UserRepositoryInterface::class)->deletePreferences($id);
-    }
-
-    public function news(int $perPage)
-    {
-        return resolve(UserRepositoryInterface::class)->news($perPage);
-    }
 
 }

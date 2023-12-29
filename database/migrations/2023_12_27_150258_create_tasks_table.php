@@ -19,7 +19,7 @@ return new class extends Migration
                 ->onDelete('cascade');
             $table->string('title');
             $table->text('description')->nullable();
-            $table->enum('status', ['created', 'assigned', 'in_progress', 'complete'])->default('created');
+            $table->enum('status', ['created', 'in_progress', 'complete'])->default('created');
             $table->timestamps();
         });
     }

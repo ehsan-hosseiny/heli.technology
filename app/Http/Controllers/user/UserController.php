@@ -5,6 +5,7 @@ namespace App\Http\Controllers\user;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\AddPreferenceRequest;
+use App\Http\Requests\CreateTaskRequest;
 use App\Http\Resources\SourceCollection;
 use App\Http\Resources\UserPreferenceCollection;
 use App\Interfaces\UserServiceInterface;
@@ -17,42 +18,21 @@ class UserController extends Controller
     {
     }
 
-    public function preferences()
+    public function createTask(CreateTaskRequest $request)
     {
-        $data =$this->userServiceInterface->preferences();
-        $data = UserPreferenceCollection::collection($data);
-        return response()->json(['message' => 'user preferences list', 'data' => $data],Response::HTTP_OK);
+
+        $data = $this->userServiceInterface->addTask(auth()->user()->id,$request->title,$request->description);
+
+        return response()->json(['message' => 'user preferences', 'data' => '', Response::HTTP_OK]);
     }
 
-    public function sources()
+    public function editTask(Request $request)
     {
-        $data =$this->userServiceInterface->sources();
-        return response()->json(['message' => 'user preferences list', 'data' => $data],Response::HTTP_OK);
-    }
 
-    public function addPreferences(AddPreferenceRequest $request)
-    {
-        $this->userServiceInterface->addPreferences($request->type,$request->preference);
-        return response()->json(['message' => 'user preferences added successfully', 'data' => ''],
-            Response::HTTP_CREATED);
-    }
-
-    public function deletePreferences($id)
-    {
-        $this->userServiceInterface->deletePreferences($id);
-        return response()->json(['message' => 'user preferences deleted successfully', 'data' => ''],
-            Response::HTTP_OK);
-    }
-
-    public function news(Request $request)
-    {
-        $perPage = $request->input('per_page', 10);
-
-        $data = $this->userServiceInterface->news($perPage);
+        $data = $this->userServiceInterface->editTask($request);
         return response()->json([
             'message' => 'user preferences',
             'data' => SourceCollection::collection($data)->response()->getData(true)],
             Response::HTTP_OK);
-
     }
 }

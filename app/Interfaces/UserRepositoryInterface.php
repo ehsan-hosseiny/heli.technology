@@ -9,5 +9,6 @@ use App\Models\UserPreference;
 
 interface UserRepositoryInterface
 {
+    public function addTask(int $userId,string $title, string $description = null);
 
 }

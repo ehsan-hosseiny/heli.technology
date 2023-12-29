@@ -9,32 +9,20 @@ use App\Models\UserPreference;
 
 interface UserServiceInterface
 {
-    /**
-     * @return UserPreference
-     */
-    public function preferences();
 
     /**
+     * @param int $userId
+     * @param string $title
+     * @param string|null $description
      * @return mixed
      */
-    public function sources();
-
-    /**
-     * @param string $type
-     * @param string $preference
-     * @return mixed
-     */
-    public function addPreferences(string $type,string $preference);
+    public function addTask(int $userId,string $title, string $description = null);
 
     /**
      * @return UserPreference
      */
-    public function deletePreferences($id);
+    public function editTask();
 
-    /**
-     * @param int $perPage
-     * @return mixed
-     */
-    public function news(int $perPage);
+
 
 }

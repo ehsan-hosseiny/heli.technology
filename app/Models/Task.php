@@ -15,4 +15,13 @@ class Task extends Model
     const STATUS_COMPLETE = 'complete';
 
     protected $fillable=['user_id','title','description','status'];
+
+    protected static function boot()
+    {
+        parent::boot();
+        // Set default status as 'created' before saving a new model
+        static::creating(function ($task) {
+            $task->status = self::STATUS_CREATED;
+        });
+    }
 }
