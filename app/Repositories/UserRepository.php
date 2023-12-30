@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Events\TaskStatusChanged;
 use App\Interfaces\UserRepositoryInterface;
 use App\Models\Task;
 
@@ -17,8 +18,12 @@ class UserRepository implements UserRepositoryInterface
         ]);
     }
 
-    public function editTask(int $id,string $status)
+    public function changeTask(int $id,string $status)
     {
-        Task::find($id)->update(['status'=>$status]);
+        $task = Task::find($id);
+        $task->update(['status' => $status]);
+
+        // After changing the task status
+        event(new TaskStatusChanged($task->id, $status));
     }
 }

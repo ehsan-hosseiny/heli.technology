@@ -23,7 +23,7 @@ interface UserServiceInterface
      * @param string $status
      * @return mixed
      */
-    public function editTask(int $id,string $status);
+    public function changeTask(int $id,string $status);
 
 
 

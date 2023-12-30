@@ -11,6 +11,6 @@ interface UserRepositoryInterface
 {
     public function addTask(int $userId,string $title, string $description = null);
 
-    public function editTask(int $id,string $status);
+    public function changeTask(int $id,string $status);
 
 }

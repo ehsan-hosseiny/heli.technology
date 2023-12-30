@@ -20,9 +20,9 @@ class UserService implements UserServiceInterface
     /**
      * @inheritDoc
      */
-    public function editTask(int $id,string $status)
+    public function changeTask(int $id,string $status)
     {
-        return resolve(UserRepositoryInterface::class)->editTask($id, $status);
+        return resolve(UserRepositoryInterface::class)->changeTask($id, $status);
     }
 
 

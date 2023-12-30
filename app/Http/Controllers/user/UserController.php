@@ -25,9 +25,9 @@ class UserController extends Controller
         return response()->json(['message' => __('common.success_created'), 'data' => ''],Response::HTTP_OK);
     }
 
-    public function editTask($id,UpdateTaskRequest $request)
+    public function changeTask($id,UpdateTaskRequest $request)
     {
-        $this->userServiceInterface->editTask($id,$request->status);
+        $this->userServiceInterface->changeTask($id,$request->status);
         return response()->json(['message' => __('common.success_updated'), 'data' => ''], Response::HTTP_OK);
     }
 }
