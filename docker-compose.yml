@@ -4,34 +4,30 @@ services:
       container_name: helitech-app-docker
       build:
           context: .
-          dockerfile: ./docker/php/Dockerfile
+          dockerfile: Dockerfile
       expose:
           - 9000
       volumes:
           - .:/usr/src/app
           - ./public:/usr/src/app/public
-
-      depends_on: helitech-db
+      depends_on:
+          - helitech_db
       networks:
           - helitech_network
 
-
-
-
-
-  helitech-db:
-      container_name: helitech-db
-      image: mysql:latest
+  helitech_db:
+      container_name: helitech_db
+      image: mysql:8.0.20
       restart: always
-      environment:
-        MYSQL_DATABASE: helitech
-        MYSQL_ROOT: root
-        MYSQL_USER: root
-        MYSQL_PASSWORD: admin123
       volumes:
           - ./storage/db-data:/var/lib/mysql
       ports:
-          - 3307:3307
+          - 3306:3306
+      environment:
+          MYSQL_DATABASE: helitech
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_USER: root
+          MYSQL_PASSWORD: root
       networks:
           - helitech_network
 
