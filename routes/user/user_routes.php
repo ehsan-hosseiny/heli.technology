@@ -9,6 +9,5 @@ Route::middleware('auth:sanctum')->prefix('/v1')->group(function () {
         Route::get('/', [UserController::class, 'taskList'])->name('user.task.list');
         Route::post('/', [UserController::class, 'createTask'])->name('user.add.task');
         Route::patch('/{id}', [UserController::class, 'changeTask'])->name('user.change.task');
-        Route::delete('/{id}', [UserController::class, 'changeTask'])->name('user.change.task');
     });
 });
