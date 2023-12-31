@@ -13,4 +13,7 @@ interface UserRepositoryInterface
 
     public function changeTask(int $id,string $status);
 
+    public function taskList();
+
+
 }

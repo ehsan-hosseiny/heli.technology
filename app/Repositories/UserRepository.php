@@ -26,4 +26,10 @@ class UserRepository implements UserRepositoryInterface
         // After changing the task status
         event(new TaskStatusChanged($task->id, $status));
     }
+
+    public function taskList()
+    {
+        return auth()->user()->tasks;
+
+    }
 }

@@ -25,5 +25,13 @@ class UserService implements UserServiceInterface
         return resolve(UserRepositoryInterface::class)->changeTask($id, $status);
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function taskList()
+    {
+        return resolve(UserRepositoryInterface::class)->taskList();
+    }
+
 
 }

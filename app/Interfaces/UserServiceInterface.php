@@ -25,6 +25,11 @@ interface UserServiceInterface
      */
     public function changeTask(int $id,string $status);
 
+    /**
+     * @return mixed
+     */
+    public function taskList();
+
 
 
 }
