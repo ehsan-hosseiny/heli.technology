@@ -8,3 +8,8 @@
 
 #### Run bellow command to run migration
 `php artisan migrate`
+
+#### For run test run bellow command
+`php artisan test`
+
+**Note**: You can use api list with Postman (inside postman folder)

@@ -23,4 +23,16 @@ class Task extends Model
             $task->status = self::STATUS_CREATED;
         });
     }
+
+    public function getStatusTitleAttribute(): string
+    {
+        $status = $this->attributes['status'] ?? null;
+
+        return match ($status) {
+            self::STATUS_CREATED => 'Created',
+            self::STATUS_IN_PROGRESS => 'In Progress',
+            self::STATUS_COMPLETE => 'Complete',
+            default => 'Unknown',
+        };
+    }
 }

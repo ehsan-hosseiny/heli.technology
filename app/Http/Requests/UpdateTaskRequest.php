@@ -28,13 +28,8 @@ class UpdateTaskRequest extends FormRequest
     {
         $statuses = implode(',', [Task::STATUS_IN_PROGRESS, Task::STATUS_COMPLETE]);
         $taskId = $this->route('id');
-
         $rules["status"] = ['required','in:' . $statuses,new ValidateTaskId($taskId)];
-
-
         return $rules;
-
-
     }
 
     public function messages()
